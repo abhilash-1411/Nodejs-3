@@ -1,0 +1,42 @@
+const app=require('./app')
+const fs=require('fs')
+const data=require('./data')
+
+// console.log("Hello");
+
+// var a=10;
+// var b=20;
+// var c=30;
+// console.warn(a+b+c)
+
+// console.log(app)
+// console.log(app.x);
+// console.log(app.y);
+// console.log(app.z());
+
+// Filter 
+// const arr=[1,2,3,4,5,6,7,8,9,9,9];
+// const res1=arr.filter((item)=>{
+//     // return item===9;
+//     return item>=3;
+// })
+// // console.log(res1)
+// console.log(__dirname);
+// console.log(__filename);
+
+// fs.writeFileSync("code.txt",'Haan bhaiyaa');
+
+// #7  
+// Basic server 
+
+const http=require('http')
+
+http.createServer((req,res)=>{
+    // res.write("<h1>Hellooo this is Abhilash <br/> trying to create a server </h1> ")
+    // res.end();
+    res.writeHead(200,{'Content-Type':'application\json'});
+    res.write(JSON.stringify(data))
+    res.end();
+}
+
+).listen(4500)
