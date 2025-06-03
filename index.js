@@ -1,4 +1,4 @@
-const app=require('./app')
+// const app=require('./app')
 const fs=require('fs')
 const data=require('./data')
 
@@ -54,6 +54,7 @@ const data=require('./data')
 // })
 // })
 
+/*
 //14-CRUD with File system
 const path=require('path')
 const dirPath=path.join(__dirname,'crud')
@@ -74,3 +75,23 @@ fs.rename(filePath,`${dirPath}/testing.txt`,(err)=>{
 })
 //Delete
 // fs.unlinkSync(`${dirPath}/testing.txt`)
+*/
+
+
+// Expresss 
+const express=require('express')
+const app=express();
+
+app.get('',(req,res)=>{
+    console.log("Data sent by browser",req.query.name)
+    res.send("Hello,this is home page")
+    
+})
+app.get('/about',(req,res)=>{
+    res.send("Hello,this is about page")
+})
+app.get('/help',(req,res)=>{
+    res.send("Hello,this is help page")
+})
+
+app.listen(5000)
