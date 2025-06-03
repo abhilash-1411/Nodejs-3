@@ -84,14 +84,24 @@ const app=express();
 
 app.get('',(req,res)=>{
     console.log("Data sent by browser",req.query.name)
-    res.send("Hello,this is home page")
+    res.send(`<h1>Hello,this is home page </h1>
+        <a href="/about" >Go to About page</a>
+        `)
     
 })
 app.get('/about',(req,res)=>{
-    res.send("Hello,this is about page")
+    res.send(`
+       <input type='text' placeholder='User name' value=${req.query.name} /> 
+       <button>Submit</button>
+         <a href="/help" >Go to help page</a>
+
+        `)
 })
 app.get('/help',(req,res)=>{
-    res.send("Hello,this is help page")
+    res.send({
+   name:'Abhilash',
+ email:'abhi@test.com '
+    })
 })
 
 app.listen(5000)
