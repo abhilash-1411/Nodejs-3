@@ -41,15 +41,36 @@ const data=require('./data')
 
 // ).listen(4500)
 
-//Creating file from command line
-const path=require('path')
-const dirPath=path.join(__dirname,'files');
-// for(let i=0;i<5;i++){
-//   fs.writeFileSync(dirPath+"/text"+i+".txt","A simple text file"+i+"");
-// }
+//13-Creating file from command line
+// const path=require('path')
+// const dirPath=path.join(__dirname,'files');
+// // for(let i=0;i<5;i++){
+// //   fs.writeFileSync(dirPath+"/text"+i+".txt","A simple text file"+i+"");
+// // }
 
-fs.readdir(dirPath,(err,files)=>{
-    files.forEach((file)=>{
-        console.log("File name is ",file)
-    })
+// fs.readdir(dirPath,(err,files)=>{
+// files.forEach((file)=>{
+// console.log("File name is ",file)
+// })
+// })
+
+//14-CRUD with File system
+const path=require('path')
+const dirPath=path.join(__dirname,'crud')
+const filePath=`${dirPath}/test.txt`
+//Create
+fs.writeFileSync(filePath,'A simple text file')
+//Read
+fs.readFile(filePath,'utf8',(err,file)=>{
+    console.warn(file)
 })
+//Update
+fs.appendFile(filePath,' and file name is test',(err)=>{
+    if(!err) console.log("File is updated")
+})
+// //Rename
+fs.rename(filePath,`${dirPath}/testing.txt`,(err)=>{
+     if(!err) console.log("File is renamed")
+})
+//Delete
+// fs.unlinkSync(`${dirPath}/testing.txt`)
