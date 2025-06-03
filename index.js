@@ -29,14 +29,27 @@ const data=require('./data')
 // #7  
 // Basic server 
 
-const http=require('http')
+// const http=require('http')
 
-http.createServer((req,res)=>{
-    // res.write("<h1>Hellooo this is Abhilash <br/> trying to create a server </h1> ")
-    // res.end();
-    res.writeHead(200,{'Content-Type':'application\json'});
-    res.write(JSON.stringify(data))
-    res.end();
-}
+// http.createServer((req,res)=>{
+//     // res.write("<h1>Hellooo this is Abhilash <br/> trying to create a server </h1> ")
+//     // res.end();
+//     res.writeHead(200,{'Content-Type':'application\json'});
+//     res.write(JSON.stringify(data))
+//     res.end();
+// }
 
-).listen(4500)
+// ).listen(4500)
+
+//Creating file from command line
+const path=require('path')
+const dirPath=path.join(__dirname,'files');
+// for(let i=0;i<5;i++){
+//   fs.writeFileSync(dirPath+"/text"+i+".txt","A simple text file"+i+"");
+// }
+
+fs.readdir(dirPath,(err,files)=>{
+    files.forEach((file)=>{
+        console.log("File name is ",file)
+    })
+})
