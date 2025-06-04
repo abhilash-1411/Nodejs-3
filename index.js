@@ -82,26 +82,32 @@ fs.rename(filePath,`${dirPath}/testing.txt`,(err)=>{
 const express=require('express')
 const app=express();
 
-app.get('',(req,res)=>{
-    console.log("Data sent by browser",req.query.name)
-    res.send(`<h1>Hello,this is home page </h1>
-        <a href="/about" >Go to About page</a>
-        `)
+// app.get('',(req,res)=>{
+//     console.log("Data sent by browser",req.query.name)
+//     res.send(`<h1>Hello,this is home page </h1>
+//         <a href="/about" >Go to About page</a>
+//         `)
     
-})
-app.get('/about',(req,res)=>{
-    res.send(`
-       <input type='text' placeholder='User name' value=${req.query.name} /> 
-       <button>Submit</button>
-         <a href="/help" >Go to help page</a>
+// })
+// app.get('/about',(req,res)=>{
+//     res.send(`
+//        <input type='text' placeholder='User name' value=${req.query.name} /> 
+//        <button>Submit</button>
+//          <a href="/help" >Go to help page</a>
 
-        `)
-})
-app.get('/help',(req,res)=>{
-    res.send({
-   name:'Abhilash',
- email:'abhi@test.com '
-    })
-})
+//         `)
+// })
+// app.get('/help',(req,res)=>{
+//     res.send({
+//    name:'Abhilash',
+//  email:'abhi@test.com '
+//     })
+// })
+
+// render html pahe ---- 
+const path=require('path')
+const publicPath=path.join(__dirname,'public')
+
+app.use(express.static(publicPath))
 
 app.listen(5000)
