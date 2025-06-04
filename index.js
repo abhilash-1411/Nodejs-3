@@ -79,8 +79,8 @@ fs.rename(filePath,`${dirPath}/testing.txt`,(err)=>{
 
 
 // Expresss 
-const express=require('express')
-const app=express();
+// const express=require('express')
+// const app=express();
 
 // app.get('',(req,res)=>{
 //     console.log("Data sent by browser",req.query.name)
@@ -105,9 +105,36 @@ const app=express();
 // })
 
 // render html pahe ---- 
-const path=require('path')
-const publicPath=path.join(__dirname,'public')
+// const path=require('path')
+// const publicPath=path.join(__dirname,'public')
 
-app.use(express.static(publicPath))
+// app.use(express.static(publicPath))
 
-app.listen(5000)
+// app.listen(5000)
+
+//25-Middleware
+
+const express=require('express');
+const app=express();
+
+const reqFilter=(req,resp,next)=>{
+    if(!req.query.age){
+        resp.send('Please provide age')
+    }
+    else if(req.query.age<18){
+        resp.send('You can not access this page')
+    }
+    else{
+ next();
+    }
+   
+}
+app.use(reqFilter)
+
+app.get('/',(req,resp)=>{
+    resp.send('Welcome to home page')
+})
+app.get('/users',(req,resp)=>{
+    resp.send('Welcome to users  page')
+})
+app.listen(5000);
