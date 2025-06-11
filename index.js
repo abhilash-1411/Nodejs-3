@@ -114,30 +114,47 @@ fs.rename(filePath,`${dirPath}/testing.txt`,(err)=>{
 
 //25-Middleware
 
-const express=require('express');
-const app=express();
-const reqFilter=require('./middleware')
-const route=express.Router()
+// const express=require('express');
+// const app=express();
+// const reqFilter=require('./middleware')
+// const route=express.Router()
 
 
-route.use(reqFilter)
+// route.use(reqFilter)
 
 // Application level middleware 
 // app.use(reqFilter)
 
-app.get('/',(req,resp)=>{
-    resp.send('Welcome to home page')
-})
+// app.get('/',(req,resp)=>{
+//     resp.send('Welcome to home page')
+// })
 //Route level middleware
-app.get('/users',(req,resp)=>{
-    resp.send('Welcome to users  page')
-})
-route.get('/about',(req,resp)=>{
-    resp.send('Welcome to about page')
-})
-route.get('/contact',(req,resp)=>{
-    resp.send('Welcome to contact page')
-})
-app.use('/',route)
+// app.get('/users',(req,resp)=>{
+//     resp.send('Welcome to users  page')
+// })
+// route.get('/about',(req,resp)=>{
+//     resp.send('Welcome to about page')
+// })
+// route.get('/contact',(req,resp)=>{
+//     resp.send('Welcome to contact page')
+// })
+// app.use('/',route)
 
-app.listen(5000);
+// app.listen(5000);
+
+// #31 Connection with MongoDb 
+
+const {MongoClient}=require('mongodb')
+const url='mongodb://localhost:27017'
+const database='E-comm'
+
+const client=new MongoClient(url);
+
+async function getData(){
+     let result=await client.connect()
+     let db=result.db(database)
+     let collection=db.collection('products')
+     const response=await collection.find({}).toArray()
+     console.log(response)
+}
+getData()
