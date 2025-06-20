@@ -144,17 +144,22 @@ fs.rename(filePath,`${dirPath}/testing.txt`,(err)=>{
 
 // #31 Connection with MongoDb 
 
-const {MongoClient}=require('mongodb')
-const url='mongodb://localhost:27017'
-const database='E-comm'
 
-const client=new MongoClient(url);
 
-async function getData(){
-     let result=await client.connect()
-     let db=result.db(database)
-     let collection=db.collection('products')
-     const response=await collection.find({}).toArray()
-     console.log(response)
+// Using Promise 
+// dbConnect().then((resp)=>{
+//     resp.find().toArray().then((data)=>{
+//         console.warn(data)
+//     })
+// })
+// console.warn(dbConnect())
+
+// Using function 
+const dbConnect=require('./mongodb')
+
+const main= async()=>{
+  let data= await dbConnect();
+  data= await data.find().toArray();
+  console.warn(data)
 }
-getData()
+main()
