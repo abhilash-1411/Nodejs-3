@@ -7,7 +7,8 @@ const insert=async()=>{
         [
              { name:'Max1',brand:'Micromax',price:230,category:'Mobiles' },
               { name:'Max2',brand:'Micromax',price:330,category:'Mobiles' },
-               { name:'Max3',brand:'Micromax',price:430,category:'Mobiles' }
+               { name:'Max3',brand:'Micromax',price:430,category:'Mobiles' },
+               {name:'Poco',brand:'MI',price:345,category:'Mobile'},
         ]
     )
 }
