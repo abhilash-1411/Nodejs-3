@@ -26,4 +26,10 @@ const updateInDB=async ()=>{
  let data=await Product.updateOne({name:'Pixel3'},{$set:{price:786}})
   console.log(data)
 }
-updateInDB()
+// updateInDB()
+const deleteInDB=async ()=>{
+ const Product = mongoose.model("products", ProductSchema);
+ let data=await Product.deleteOne({name:'ac'})
+  console.log(data)
+}
+deleteInDB()
