@@ -19,4 +19,11 @@ const saveInDB = async () => {
   let res = await data.save();
   console.log(res);
 };
-saveInDB();
+// saveInDB();
+
+const updateInDB=async ()=>{
+ const Product = mongoose.model("products", ProductSchema);
+ let data=await Product.updateOne({name:'Pixel3'},{$set:{price:786}})
+  console.log(data)
+}
+updateInDB()
