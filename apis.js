@@ -16,17 +16,18 @@ app.post('/create',async (req,resp)=>{
     resp.send(result)
 })
 
-// app.delete('/delete/:_id',async(req,resp)=>{
-//     console.log(req.params.id);
-//     let data=await Product.deleteOne(req.params.id)
-//     resp.send("Deleted successfully")
-// })
 app.put('/update/:_id',async(req,resp)=>{
     let data=await Product.updateOne(
         req.params,
         {$set:req.body}
     )
     resp.send(data)
+})
+
+ app.delete('/delete/:_id',async(req,resp)=>{
+    console.log(req.params.id);
+    let data=await Product.deleteOne(req.params.id)
+    resp.send("Deleted successfully")
 })
 
 app.listen(5000,()=>{
