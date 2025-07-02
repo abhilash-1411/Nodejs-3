@@ -21,12 +21,13 @@ app.post('/create',async (req,resp)=>{
 //     let data=await Product.deleteOne(req.params.id)
 //     resp.send("Deleted successfully")
 // })
-// app.put('/update/:id',async(req,resp)=>{
-//     let data=await Product.updateOne(
-//         {},
-//         {$set:{}}
-//     )
-// })
+app.put('/update/:_id',async(req,resp)=>{
+    let data=await Product.updateOne(
+        req.params,
+        {$set:req.body}
+    )
+    resp.send(data)
+})
 
 app.listen(5000,()=>{
     console.log("Server is runnig on PORT 5000")
