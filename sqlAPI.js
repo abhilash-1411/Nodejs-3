@@ -23,6 +23,17 @@ app.post('/',(req,resp)=>{
      resp.send(result)
   })
 })
+
+app.put('/:name',(req,resp)=>{
+    // const data=["Anii","26","footballer",req.params.name]
+    const data=[req.body.name,req.body.age,req.body.category,req.params.name]
+    con.query('UPDATE users SET name=?,age=?,category=? where name=?',data,(error,result,fields)=>{
+        if(error) error;
+        resp.send(result)
+    })
+})
+
+
 app.listen(5000,()=>{
     console.log("Server is listening on PORT 5000")
 })
