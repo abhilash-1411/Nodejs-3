@@ -33,6 +33,13 @@ app.put('/:name',(req,resp)=>{
     })
 })
 
+app.delete('/:name',(req,resp)=>{
+    con.query("DELETE from users WHERE name=?",[req.params.name],(err,result,fields)=>{
+        if(err) throw err;
+        resp.send(result)
+    })
+})
+
 
 app.listen(5000,()=>{
     console.log("Server is listening on PORT 5000")
